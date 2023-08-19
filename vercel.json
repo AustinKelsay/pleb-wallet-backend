@@ -16,7 +16,7 @@
         "dest": "./routers/lightningRouter.js"
       },
       {
-        "src": "/(.*)",
+        "src": "/",
         "dest": "index.js"
       }
     ]

@@ -9,11 +9,11 @@
     "routes": [
       {
         "src": "/users",
-        "dest": "./routers/usersRouter.js"
+        "dest": "routers/usersRouter.js"
       },
       {
         "src": "/lighting",
-        "dest": "./routers/lightningRouter.js"
+        "dest": "routers/lightningRouter.js"
       },
       {
         "src": "/",

@@ -8,11 +8,11 @@
     ],
     "routes": [
       {
-        "src": "/users(.*)",
+        "src": "/users",
         "dest": "./routers/usersRouter.js"
       },
       {
-        "src": "/lighting(.*)",
+        "src": "/lighting",
         "dest": "./routers/lightningRouter.js"
       },
       {

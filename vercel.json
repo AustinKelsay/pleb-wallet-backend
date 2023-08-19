@@ -6,18 +6,10 @@
         "use": "@vercel/node"
       }
     ],
-    "rewrites": [
+    "routes": [
       {
-        "source": "/users",
-        "destination": "/routers/usersRouter.js"
-      },
-      {
-        "source": "/lighting/*",
-        "destination": "/routers/lightningRouter.js"
-      },
-      {
-        "source": "/",
-        "destination": "/index.js"
+        "src": "/(.*)",
+        "dest": "index.js"
       }
     ]
   }

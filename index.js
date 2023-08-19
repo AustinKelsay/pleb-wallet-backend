@@ -7,7 +7,6 @@ const rateLimit = require("express-rate-limit");
 const { connect } = require("./lnd");
 const usersRouter = require("./routers/usersRouter");
 const lightningRouter = require("./routers/lightningRouter");
-const testRouter = require("./test");
 
 dotenv.config();
 
@@ -43,7 +42,6 @@ server.get("/", (req, res) => {
 // Add our routers before server.listen()
 server.use("/users", usersRouter);
 server.use("/lightning", lightningRouter);
-server.use("/test", testRouter);
 
 // Set the server to listen on the provided port, or 5000 if no port is specified
 const PORT = process.env.PORT || 5500;

@@ -14,10 +14,6 @@
       {
         "src": "/lighting(.*)",
         "dest": "/routers/lightningRouter.js"
-      },
-      {
-        "src": "/",
-        "dest": "index.js"
       }
     ]
   }

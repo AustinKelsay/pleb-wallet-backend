@@ -16,6 +16,10 @@
         "dest": "routers/lightningRouter.js"
       },
       {
+        "src": "/test",
+        "dest": "test.js"
+      },
+      {
         "src": "/",
         "dest": "index.js"
       }

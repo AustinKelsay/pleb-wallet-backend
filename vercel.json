@@ -8,7 +8,15 @@
     ],
     "routes": [
       {
-        "src": "/(.*)",
+        "src": "/users(.*)",
+        "dest": "routers/usersRouter.js"
+      },
+      {
+        "src": "/lighting(.*)",
+        "dest": "routers/lightningRouter.js"
+      },
+      {
+        "src": "/",
         "dest": "index.js"
       }
     ]

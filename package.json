@@ -6,7 +6,7 @@
     "scripts": {
       "migrate": "knex migrate:latest --env production",
       "start": "npm run migrate && nodemon index.js",
-      "build": "npm run migrate && nodemon index.js"
+      "vercel-build": "npm run migrate"
   },
   "keywords": [],
   "author": "",

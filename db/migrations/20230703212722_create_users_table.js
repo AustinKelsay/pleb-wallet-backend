@@ -13,7 +13,7 @@ exports.up = function (knex) {
     table.string("password", 128).notNullable();
 
     // Creates an integer column named "adminKey" that defaults to 1 if no other value is provided
-    table.integer("adminKey").defaultTo(1);
+    table.bigInteger("adminKey").defaultTo(1);
   });
 };
 

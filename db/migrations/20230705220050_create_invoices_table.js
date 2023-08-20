@@ -23,7 +23,7 @@ exports.up = function (knex) {
     table.boolean("settled").notNullable();
 
     // Creates a timestamp column named "settle_date" with a default value of 0
-    table.timestamp("settle_date").defaultTo(0);
+    table.timestamp("settle_date").defaultTo(null);
 
     // Creates a timestamp column named "created_at" that defaults to the current time
     table.timestamp("created_at").defaultTo(knex.fn.now());

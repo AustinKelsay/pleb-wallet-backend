@@ -21,6 +21,9 @@ const connect = async () => {
       console.log("Waiting for LND to be in the 'active' state...");
       await new Promise((resolve) => setTimeout(resolve, 5000)); // wait for 5 seconds
       retries--;
+      if (lnd.state === "locked") {
+        console.log("lnd is locked");
+      }
     }
 
     if (lnd.state !== "active") {

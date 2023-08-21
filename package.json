@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "migrate-prod": "knex migrate:rollback --env production --all && knex migrate:latest --env production",
-    "vercel-build": "npm run migrate-prod"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",

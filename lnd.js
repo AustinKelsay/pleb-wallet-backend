@@ -5,9 +5,7 @@ const Invoice = require("./db/models/invoice");
 dotenv.config();
 
 const options = {
-  host: process.env.HOST,
-  cert: process.env.CERT,
-  macaroon: process.env.MACAROON,
+  lndconnectUri: process.env.LND_CONNECT,
 };
 
 const lnd = new LndGrpc(options);
@@ -19,6 +17,7 @@ const connect = async () => {
     let retries = 10;
     while (lnd.state !== "active" && retries > 0) {
       console.log("Waiting for LND to be in the 'active' state...");
+      console.log("current state:", lnd.state);
       await new Promise((resolve) => setTimeout(resolve, 5000)); // wait for 5 seconds
       retries--;
       if (lnd.state === "locked") {

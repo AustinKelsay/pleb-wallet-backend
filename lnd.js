@@ -15,12 +15,11 @@ const lnd = new LndGrpc(options);
 const connect = async () => {
   try {
     await lnd.connect();
+    console.log(`LND gRPC connection state: ${lnd.state}`);
 
     // Start the invoice event stream on successful connection
     // We want to always be listening for invoice events while the server is running
     invoiceEventStream();
-
-    console.log("LND gRPC client is ready to use");
   } catch (e) {
     console.log("error", e);
   }

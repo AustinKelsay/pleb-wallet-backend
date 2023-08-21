@@ -15,6 +15,13 @@ const lnd = new LndGrpc(options);
 const connect = async () => {
   try {
     await lnd.connect();
+
+    // Wait for the 'active' state
+    if (lnd.state !== "active") {
+      console.log("Waiting for LND to be in the 'active' state...");
+      await lnd.waitForState("active");
+    }
+
     console.log(`LND gRPC connection state: ${lnd.state}`);
 
     // Start the invoice event stream on successful connection

@@ -86,7 +86,6 @@ const payInvoice = async ({ payment_request }) => {
 };
 
 const invoiceEventStream = async () => {
-  console.log(lnd.services.Lightning);
   await lnd.services.Lightning.subscribeInvoices({
     add_index: 0,
     settle_index: 0,

@@ -8,8 +8,6 @@ dotenv.config();
 
 const env = process.env.NODE_ENV || "development";
 
-console.log(env);
-
 const db = knex(config[env]);
 
 module.exports = db;

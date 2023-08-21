@@ -84,7 +84,7 @@ router.post("/pay", authenticateAdmin, async (req, res) => {
   }
 
   // format date into timestamp
-  const settleDate = Date.now() / 1000;
+  const settleDate = new Date().toISOString();
 
   // If the payment was successful (indicated by the existence of 'pay.payment_route'), we create a new 'payment' record in the database.
   if (pay?.payment_route) {

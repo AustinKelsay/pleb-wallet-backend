@@ -16,16 +16,22 @@ const connect = async () => {
   try {
     await lnd.connect();
 
-    // Wait for the 'active' state
-    if (lnd.state !== "active") {
+    let retries = 10;
+    while (lnd.state !== "active" && retries > 0) {
       console.log("Waiting for LND to be in the 'active' state...");
-      await lnd.waitForState("active");
+      await new Promise((resolve) => setTimeout(resolve, 5000)); // wait for 5 seconds
+      retries--;
+    }
+
+    if (lnd.state !== "active") {
+      throw new Error(
+        "LND did not reach 'active' state within the expected time"
+      );
     }
 
     console.log(`LND gRPC connection state: ${lnd.state}`);
 
     // Start the invoice event stream on successful connection
-    // We want to always be listening for invoice events while the server is running
     invoiceEventStream();
   } catch (e) {
     console.log("error", e);

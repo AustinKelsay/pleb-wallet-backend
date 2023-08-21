@@ -91,6 +91,7 @@ const invoiceEventStream = async () => {
     settle_index: 0,
   })
     .on("data", async (data) => {
+      console.log("on data:", data);
       if (data.settled) {
         // Check if the invoice exists in the database
         const existingInvoice = await Invoice.findOne(data.payment_request);

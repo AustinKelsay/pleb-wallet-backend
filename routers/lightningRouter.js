@@ -83,6 +83,9 @@ router.post("/pay", authenticateAdmin, async (req, res) => {
     res.status(500).json(pay.payment_error);
   }
 
+  // format date into timestamp
+  const settleDate = Date.now() / 1000;
+
   // If the payment was successful (indicated by the existence of 'pay.payment_route'), we create a new 'payment' record in the database.
   if (pay?.payment_route) {
     const payment = await Invoice.create({
@@ -92,7 +95,7 @@ router.post("/pay", authenticateAdmin, async (req, res) => {
       value: pay.payment_route.total_amt,
       fees: pay.payment_route.total_fees,
       settled: true,
-      settle_date: Date.now(),
+      settle_date: settleDate,
       user_id: user_id,
     });
 

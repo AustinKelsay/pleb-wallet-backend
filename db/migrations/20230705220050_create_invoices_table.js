@@ -4,8 +4,8 @@ exports.up = function (knex) {
     // Creates a primary key column which will auto-increment its value for each new record
     table.increments();
 
-    // Creates a string column named "payment_request" that cannot be null and must be unique across all records
-    table.string("payment_request").notNullable().unique();
+    // Creates a string column named "payment_request" that can be at the most 100 characters, cannot be null, and must be unique across all records.
+    table.string("payment_request", 1000).notNullable().unique();
 
     // Creates an integer column named "value" that cannot be null
     table.integer("value").notNullable();

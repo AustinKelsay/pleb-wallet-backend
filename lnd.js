@@ -14,17 +14,6 @@ const connect = async () => {
   try {
     await lnd.connect();
 
-    let retries = 10;
-    while (lnd.state !== "active" && retries > 0) {
-      console.log("Waiting for LND to be in the 'active' state...");
-      console.log("current state:", lnd.state);
-      await new Promise((resolve) => setTimeout(resolve, 5000)); // wait for 5 seconds
-      retries--;
-      if (lnd.state === "locked") {
-        console.log("lnd is locked");
-      }
-    }
-
     if (lnd.state !== "active") {
       throw new Error(
         "LND did not reach 'active' state within the expected time"
@@ -32,9 +21,6 @@ const connect = async () => {
     }
 
     console.log(`LND gRPC connection state: ${lnd.state}`);
-
-    // Start the invoice event stream on successful connection
-    invoiceEventStream();
   } catch (e) {
     console.log("error", e);
   }

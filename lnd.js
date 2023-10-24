@@ -19,8 +19,12 @@ const connect = async () => {
         "LND did not reach 'active' state within the expected time"
       );
     }
-
+    
     console.log(`LND gRPC connection state: ${lnd.state}`);
+
+    // Start the invoice event stream on successful connection
+    // We want to always be listening for invoice events while the server is running
+    invoiceEventStream();
   } catch (e) {
     console.log("error", e);
   }

@@ -88,7 +88,7 @@ const invoiceEventStream = async () => {
 
         // If the invoice exists, update it in the database
         if (existingInvoice) {
-          const settleDate = new Date(data.settle_data * 1000).toISOString();
+          const settleDate = new Date(data.settle_date * 1000).toISOString();
           await Invoice.update(data.payment_request, {
             settled: data.settled,
             settle_date: settleDate,

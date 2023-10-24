@@ -12,6 +12,10 @@ dotenv.config();
 
 // Create a new instance of the Express server
 const server = express();
+
+// Trust X-Forwarded-* headers
+server.set('trust proxy', 1);
+
 // Use helmet middleware for security
 server.use(helmet());
 // Use morgan middleware for logging using the 'common' logging format
